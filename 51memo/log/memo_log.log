@@ -1,0 +1,12 @@
+2019-08-15 15:14:34,946 memoadmin.py [line:71] memo_log.log WARNING 新用户apple已创建
+2019-08-15 15:14:41,323 memoadmin.py [line:98] memo_log.log WARNING 密码输入错误！
+2019-08-15 15:14:49,085 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-08-15 15:14:58,269 memoadmin.py [line:143] memo_log.log WARNING 新增备忘条目：2019-08-16:下午 2:00开会@小李
+2019-08-15 15:15:13,447 memoadmin.py [line:143] memo_log.log WARNING 新增备忘条目：2019-08-17:上午 6:00起床@我
+2019-08-15 15:15:42,481 memoadmin.py [line:143] memo_log.log WARNING 新增备忘条目：2019-08-20:晚上 8:00看电影@小周
+2019-08-15 15:16:00,414 memoadmin.py [line:201] memo_log.log INFO 查看备忘录列表
+2019-08-15 15:16:32,433 memoadmin.py [line:191] memo_log.log WARNING 备忘录修改成功！ID: 3  2019-08-20:晚上 8:00看电影@小周 修改为 2019-08-20:晚上 9:00看电影@小周
+2019-08-15 15:16:37,161 memoadmin.py [line:201] memo_log.log INFO 查看备忘录列表
+2019-08-15 15:16:48,094 memoadmin.py [line:156] memo_log.log WARNING 删除条目-ID: 1 2019-08-16:下午 2:00开会@小李
+2019-08-15 15:16:51,594 memoadmin.py [line:201] memo_log.log INFO 查看备忘录列表
+2019-08-15 15:17:01,559 memoadmin.py [line:213] memo_log.log WARNING 导出Apple的备忘录为PDF
