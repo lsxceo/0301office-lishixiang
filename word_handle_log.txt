@@ -1,0 +1,11 @@
+(lishixiang) C:\study\0301office-lishixiang>C:/Users/LuSai/Anaconda3/envs/lishixiang/python.exe c:/study/0301office-lishixiang/word_handle.py
+请输入标题: 标题
+请输入副标题: 副标题
+请输入正文内容: 你好世界!
+请选择字体是否加粗:
+0 - 不加粗
+其他 - 加粗
+ 0
+请输入字体大小: 11
+请输入要保存的文件的名字: word_handle
+{'0': 'done'}
