@@ -10,3 +10,5 @@
 2019-08-15 15:16:48,094 memoadmin.py [line:156] memo_log.log WARNING 删除条目-ID: 1 2019-08-16:下午 2:00开会@小李
 2019-08-15 15:16:51,594 memoadmin.py [line:201] memo_log.log INFO 查看备忘录列表
 2019-08-15 15:17:01,559 memoadmin.py [line:213] memo_log.log WARNING 导出Apple的备忘录为PDF
+2019-08-16 13:08:06,938 memoadmin.py [line:98] memo_log.log WARNING 密码输入错误！
+2019-08-16 13:08:25,896 memoadmin.py [line:71] memo_log.log WARNING 新用户cat已创建
