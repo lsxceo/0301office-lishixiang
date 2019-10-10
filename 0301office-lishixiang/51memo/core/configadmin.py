@@ -25,7 +25,7 @@ class ConfigAdmin():
             self.write_config(settings.data)
         self.config.read(self.path)
 
-    def write_config(self, data:dict):
+    def write_config(self, data: dict):
         "写配置"
         ret = {'status': 0, 'statusText': 'ok!'}
         for k, v in data.items():
@@ -33,7 +33,7 @@ class ConfigAdmin():
         with open(self.path, 'w') as f:
             self.config.write(f)
         return ret
-    
+
     def read_config(self, section, option):
         "读配置"
         config_dic = {}

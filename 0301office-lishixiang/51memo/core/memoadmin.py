@@ -4,10 +4,11 @@
 # author: lishixiang
 
 import os
-import logging
 import pickle
 import time
-from . import  create_event, configadmin, log_ctrl, memo, setting, pdf_demo
+from datetime import datetime
+import json
+from . import configadmin, log_ctrl, memo, setting, pdf_demo, mailmaster
 
 
 class MemoAdmin:
@@ -22,6 +23,7 @@ class MemoAdmin:
         self.logger_name = settings.logger_name
         self.level = settings.level
         self.menu = settings.menu
+        self.mail_send_choose = settings.mail_send_choose
         self.config = configadmin.ConfigAdmin(self.conf_path, self.config_name)
         self.logger = log_ctrl.common_log(self.logger_name, log_file=os.path.join(self.log_path, self.logger_name), level=self.level)
         if not os.path.exists(os.path.join(self.db_path, 'users.pkl')):
@@ -36,6 +38,7 @@ class MemoAdmin:
         else:
             psd = input("请输入密码： ")
             psd_check = input("请再次输入密码： ")
+            email = input("请输入email账号： ")
             if psd != psd_check:
                 print('输入有误！请重新输入：')
                 return self.register()
@@ -56,19 +59,20 @@ class MemoAdmin:
                     with open(os.path.join(self.db_path, 'users.pkl'), 'wb') as f:
                         pickle.dump(datas, f)
                     # self.logger.warning(f"新用户'{user}'已创建")  # 添加日志文件
-                
+
                 # 创建用户的数据文件
                 with open(os.path.join(self.db_path, user + '.pkl'), 'wb') as f:
                     pickle.dump([], f)
-                
+
                 # 把用户配置信息添加到配置文件
                 self.config.add_config(user, 'db_path', '${base_dir}/db')
                 self.config.add_config(user, 'db_type', 'pkl')
                 self.config.add_config(user, 'db_name', user + '.pkl')
+                self.config.add_config(user, 'email', email)
                 # self.logger.info("添加新用户的配置信息")  # 添加日志文件
 
                 # 添加到日志文件
-                self.logger.warning("新用户%s已创建" %user)
+                self.logger.warning("新用户%s已创建" % user)
                 print('注册成功！')
             return self.login()
 
@@ -109,24 +113,23 @@ class MemoAdmin:
             if choose == 'q':
                 exit()
             else:
-                with open(os.path.join(self.db_path, f'{user}.pkl'), 'rb') as f:
-                    datas = pickle.load(f)
-                func = getattr(self, self.menu[choose], datas)
-                func(user, datas=datas)
+                # with open(os.path.join(self.db_path, f'{user}.pkl'), 'rb') as f:
+                #     datas = pickle.load(f)
+                func = getattr(self, self.menu[choose])
+                func(user)
         except Exception as e:
             print(f"输入有误：错误为'{e}''")
         time.sleep(2)
         return self.choose_menu(user)
 
-
-    def add(self, user, datas):
+    def add(self, user):
         "增加备忘录条目"
         event = input('请输入要添加的备忘事项：(示例：明天下午2点开会@小李@小王)')
-        create = create_event.Create_event(event)
-        split_list = create.split_list
-        newmemo = memo.Memo(split_list[0], split_list[1], split_list[2], split_list[3], split_list[4], split_list[5])
+        newmemo = memo.Memo(event)
         memo_dict = newmemo.memo_dict()
         num_list = []
+        with open(os.path.join(self.db_path, f'{user}.pkl'), 'rb') as f:
+            datas = pickle.load(f)
         if datas == []:
             memo_dict['id'] += 1
         else:
@@ -142,86 +145,138 @@ class MemoAdmin:
             pickle.dump(datas, f)
         self.logger.warning(f'新增备忘条目：{newmemo}')  # 打印出添加备忘录成功的信息
 
-    def delete(self, user, datas):
+    def delete(self, user):
         "删除备忘录条目"
+        with open(os.path.join(self.db_path, f'{user}.pkl'), 'rb') as f:
+            datas = pickle.load(f)
         for m in datas:
-            mm = memo.Memo(m['date'], m['frame'], m['hour'], m['minute'], m['thing'], m['name'])
-            print(f'ID: {m["id"]}   {mm}')
-        id = input('请输入要删除的备忘事项的ID： ')
+            mm = memo.Memo(id_=m['id'], time_=m['time_'], thing=m['thing'], name=m['name'])
+            print(mm)
+        id_ = input('请输入要删除的备忘事项的ID： ')
         for m in datas:
-            if m['id'] == int(id):
-                del_id = int(id)
-                del_memo = memo.Memo(m['date'], m['frame'], m['hour'], m['minute'], m['thing'], m['name'])
+            if m['id'] == int(id_):
+                del_id = int(id_)
+                del_memo = f"{m['time_']} {m['thing']} {m['name']}"
                 datas.remove(m)
-                self.logger.warning(f'删除条目-ID: {del_id} {del_memo}')  # 打印出删除备忘录的信息
+                self.logger.warning(f'删除条目-ID: {del_id}    {del_memo}')  # 打印出删除备忘录的信息
         with open(os.path.join(self.db_path, user + '.pkl'), 'wb') as f:
             pickle.dump(datas, f)
 
-    def modify(self, user, datas):
+    def modify(self, user):
         "修改备忘录条目"
-        last_memo = {}
+        with open(os.path.join(self.db_path, f'{user}.pkl'), 'rb') as f:
+            datas = pickle.load(f)
         for m in datas:
-            mm = memo.Memo(m['date'], m['frame'], m['hour'], m['minute'], m['thing'], m['name'])
-            print(f'ID: {m["id"]}   {mm}')
+            mm = memo.Memo(id_=m['id'], time_=m['time_'], thing=m['thing'], name=m['name'])
+            print(mm)
         num = int(input('请输入你要修改的备忘事项的ID： '))
-        event = input('请输入修改后的事项： ')
-        create = create_event.Create_event(event)
-        split_list = create.split_list
-        memonew = memo.Memo(split_list[0], split_list[1], split_list[2], split_list[3], split_list[4], split_list[5])
-        memo_dict = memonew.memo_dict()
+        event_new = input('请输入修改后的事项： ')
+        memo_new = memo.Memo(event_new)
         for m in datas:
             if m['id'] == num:
-                # 找出修改前的字典
-                last_memo['date'] = m['date']
-                last_memo['frame'] = m['frame']
-                last_memo['hour'] = m['hour']
-                last_memo['minute'] = m['minute']
-                last_memo['thing'] = m['thing']
-                last_memo['name'] = m['name']
+                # 修改前的备忘录
+                before_memo = f"ID: {num}    {m['time_']} {m['thing']} {m['name']}"
                 # 修改字典
-                m['date'] = memo_dict['date']
-                m['frame'] = memo_dict['frame']
-                m['hour'] = memo_dict['hour']
-                m['minute'] = memo_dict['minute']
-                m['thing'] = memo_dict['thing']
-                m['name'] = memo_dict['name']
-
-                before_memo = memo.Memo(last_memo['date'], last_memo['frame'], last_memo['hour'], last_memo['minute'], last_memo['thing'], last_memo['name'])
-                # current_memo = memo.Memo(memo_dict['date'], memo_dict['frame'], memo_dict['hour'], memo_dict['minute'], memo_dict['thing'], memo_dict['name'])
-                self.logger.warning(f'备忘录修改成功！ID: {num}  {before_memo} 修改为 {memonew}')  # 打印出修改备忘录的信息
+                m['time_'] = memo_new.time_
+                m['thing'] = memo_new.thing
+                m['name'] = memo_new.name
+                self.logger.warning(f'备忘录修改成功!  {before_memo} 修改为 {memo_new}')  # 打印出修改备忘录的信息
         with open(os.path.join(self.db_path, user + '.pkl'), 'wb') as f:
             pickle.dump(datas, f)
 
-    def query(self, user, datas):
+    def query(self, user):
         "查询备忘录条目"
+        with open(os.path.join(self.db_path, f'{user}.pkl'), 'rb') as f:
+            datas = pickle.load(f)
         for m in datas:
-            mm = memo.Memo(m['date'], m['frame'], m['hour'], m['minute'], m['thing'], m['name'])
+            mm = memo.Memo(id_=m['id'], time_=m['time_'], thing=m['thing'], name=m['name'])
             print(mm)
         print('- -'*15)
         self.logger.info('查看备忘录列表')
 
+    def month_query(self, user):
+        "按月份查询备忘录条目，返回JSON数据"
+        print('-' * 20)
+        month_query_list = []
+        month = input('请输入要查询的月份：')
+        with open(os.path.join(self.db_path, f'{user}.pkl'), 'rb') as f:
+            datas = pickle.load(f)
+        for m in datas:
+            mon = datetime.strptime(m['time_'], '%Y-%m-%d %X').strftime('%m')
+            if mon == month:
+                month_query_list.append(m)
+        json_data = json.dumps(month_query_list)
+        print(json_data)
+        return json_data
 
-    def export_pdf(self, user, datas):
+    def export_pdf(self, user):
         "导出文件至PDF"
         result_list = []
         result_list.append(f'{user.title()}的备忘录')
+        with open(os.path.join(self.db_path, f'{user}.pkl'), 'rb') as f:
+            datas = pickle.load(f)
         for m in datas:
-            mm = memo.Memo(m['date'], m['frame'], m['hour'], m['minute'], m['thing'], m['name'])
+            mm = memo.Memo(time_=m['time_'], thing=m['thing'], name=m['name'])
             result_list.append(str(mm))
         pdf = pdf_demo.ExportPDF(result_list, output_path=os.path.join(self.BASE_DIR, f'{user}.pdf'))
         pdf.save_text()
         self.logger.warning(f'导出{user.title()}的备忘录为PDF')
 
-    
+    def mail_send(self, user):
+        "根据指定时间的内容通过邮件发送给用户"
+        print('请选择需要发送整月还是整年的数据：  ')
+        for k, v in self.mail_send_choose.items():
+            print(f'{k}: {v}')
+        choose = input('请输入前面的数字（‘q’退出）：')
+        if choose == 'q':
+            exit()
+        elif choose != '1' and choose != '2':
+            print('输入有误，请重新输入！')
+            return self.mail_send()
+        else:
+            with open(os.path.join(self.db_path, f'{user}.pkl'), 'rb') as f:
+                datas = pickle.load(f)
+            choose_list = []
+            if choose == '1':
+                month = input('请输入月份：')
+                for m in datas:
+                    mon = datetime.strptime(m['time_'], '%Y-%m-%d %X').strftime('%m')
+                    if mon == month:
+                        choose_list.append(m)
+                year = datetime.today().strftime('%Y')
+                time_frame = f"{year}年{month}月"
+            else:
+                year = input('请输入年份：')
+                for m in datas:
+                    year_ = datetime.strptime(m['time_'], '%Y-%m-%d %X').strftime('%Y')
+                    if year_ == year:
+                        choose_list.append(m)
+                time_frame = f'{year}年'
+
+        # try:
+        data = ''
+        if choose_list == []:
+            data = '您选择的时间段数据为空'
+        else:
+            for m in choose_list:
+                mm = memo.Memo(time_=m['time_'], thing=m['thing'], name=m['name'])
+                data = data + str(mm) + '\n'
+        print(data)
+        # toaddr = '214842382@qq.com'
+        toaddr = self.config.read_config(user, 'email')
+        mail = mailmaster.MailMaster(password='python123')
+        mail.add_email_to_list(toaddr)
+        mail.send_email_all(f'{time_frame}的备忘录数据', data)
+        # except Exception as e:
+        #     print(e)
+
+
 def main():
     print('欢迎使用备忘录系统'.center(30, '*'))
     admin = MemoAdmin()
     user = admin.login()
     admin.choose_menu(user)
-    
-
 
 
 if __name__ == '__main__':
     main()
-    

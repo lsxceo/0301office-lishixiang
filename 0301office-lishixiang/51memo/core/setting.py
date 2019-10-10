@@ -8,7 +8,6 @@ import os
 import logging
 
 
-
 class Settings:
     """一个存储各种参数的类"""
     def __init__(self):
@@ -31,6 +30,12 @@ class Settings:
                 '2': 'delete',
                 '3': 'modify',
                 '4': 'query',
-                '5': 'export_pdf',
+                '5': 'month_query',
+                '6': 'export_pdf',
+                '7': 'mail_send',
                 'q': 'quit'
+            }
+        self.mail_send_choose = {
+                '1': 'month',
+                '2': 'year'
             }

@@ -15,31 +15,31 @@
 5.各个类中的每个方法必须添加说明doc-string（即def下一行加一句注释），每个类必须添加注释说明，解释作用(缺一条减10分)
 """
 
-import pickle
-import time
+from .create_event import Create_event
 
 
 class Memo:
     """备忘事项的类"""
-    def __init__(self, date, frame, hour, minute, thing, name):
+    def __init__(self, event='', id_='', time_='', thing='', name=''):
         "初始化并设置属性"
-        self._id = 0
-        self.date = date
-        self.frame = frame
-        self.hour = hour
-        self.minute = minute
+        self.event = event
+        self.id_ = id_
+        self.time_ = time_
         self.thing = thing
         self.name = name
-        # self.dic = self.memo_dict()
-        
+        if self.event != '':
+            self.event = Create_event(event)
+            self.event_format_list = self.event.new_list
+            self._id = 0
+            self.time_ = self.event_format_list[0]
+            self.thing = self.event_format_list[1]
+            self.name = self.event_format_list[2]
+
     def memo_dict(self):
-        "把各个属性存到字典中"
+        "把各个属性添加到字典中"
         dic = {
             'id': self._id,
-            'date': self.date,
-            'frame': self.frame,
-            'hour': self.hour,
-            'minute': self.minute,
+            'time_': self.time_,
             'thing': self.thing,
             'name': self.name
         }
@@ -54,6 +54,24 @@ class Memo:
         self._id = value
 
     def __str__(self):  # 设置str()函数
-        minute = str(self.minute).rjust(2, '0')
-        name = '@'.join(self.name)
-        return f'{self.date}:{self.frame} {self.hour}:{minute}{self.thing}@{name}'
+        if len(self.name) == 1:
+            at_people = '@' + self.name[0]
+        else:
+            at_people = '@' + '@'.join(self.name)
+        if self.event == '' and self.id_ != '':
+            return f'ID: {self.id_}    {self.time_} {self.thing} {at_people}'
+        elif self.id_ == '' and self.event == '':
+            return f'{self.time_} {self.thing}{at_people}'
+        else:
+            return f'{self.time_} {self.thing}{at_people}'
+
+
+def main():
+    # event = '下个月5号下午6点吃火锅@小李@小周@小王'
+    # memo = Memo(event)
+    mm = Memo(id_=1, time_='2019.11.11', thing='吃火锅', name=['我'])
+    print(mm)
+
+
+if __name__ == "__main__":
+    main()
