@@ -1,0 +1,117 @@
+2019-08-15 15:14:34,946 memoadmin.py [line:71] memo_log.log WARNING 新用户apple已创建
+2019-08-15 15:14:41,323 memoadmin.py [line:98] memo_log.log WARNING 密码输入错误！
+2019-08-15 15:14:49,085 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-08-15 15:14:58,269 memoadmin.py [line:143] memo_log.log WARNING 新增备忘条目：2019-08-16:下午 2:00开会@小李
+2019-08-15 15:15:13,447 memoadmin.py [line:143] memo_log.log WARNING 新增备忘条目：2019-08-17:上午 6:00起床@我
+2019-08-15 15:15:42,481 memoadmin.py [line:143] memo_log.log WARNING 新增备忘条目：2019-08-20:晚上 8:00看电影@小周
+2019-08-15 15:16:00,414 memoadmin.py [line:201] memo_log.log INFO 查看备忘录列表
+2019-08-15 15:16:32,433 memoadmin.py [line:191] memo_log.log WARNING 备忘录修改成功！ID: 3  2019-08-20:晚上 8:00看电影@小周 修改为 2019-08-20:晚上 9:00看电影@小周
+2019-08-15 15:16:37,161 memoadmin.py [line:201] memo_log.log INFO 查看备忘录列表
+2019-08-15 15:16:48,094 memoadmin.py [line:156] memo_log.log WARNING 删除条目-ID: 1 2019-08-16:下午 2:00开会@小李
+2019-08-15 15:16:51,594 memoadmin.py [line:201] memo_log.log INFO 查看备忘录列表
+2019-08-15 15:17:01,559 memoadmin.py [line:213] memo_log.log WARNING 导出Apple的备忘录为PDF
+2019-08-16 13:08:06,938 memoadmin.py [line:98] memo_log.log WARNING 密码输入错误！
+2019-08-16 13:08:25,896 memoadmin.py [line:71] memo_log.log WARNING 新用户cat已创建
+2019-09-26 00:51:17,478 memoadmin.py [line:98] memo_log.log WARNING 密码输入错误！
+2019-09-26 00:51:41,950 memoadmin.py [line:98] memo_log.log WARNING 密码输入错误！
+2019-09-26 00:53:26,108 memoadmin.py [line:71] memo_log.log WARNING 新用户admin已创建
+2019-09-26 00:53:30,609 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-09-26 00:53:52,120 memoadmin.py [line:143] memo_log.log WARNING 新增备忘条目：2019-09-27:下午 2:00开会@小李@小王
+2019-09-26 00:54:00,423 memoadmin.py [line:201] memo_log.log INFO 查看备忘录列表
+2019-09-26 01:07:50,359 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-09-26 01:07:52,945 memoadmin.py [line:201] memo_log.log INFO 查看备忘录列表
+2019-10-09 11:35:21,943 memoadmin.py [line:70] memo_log.log WARNING 新用户admin已创建
+2019-10-09 11:35:28,035 memoadmin.py [line:93] memo_log.log INFO 验证成功！
+2019-10-09 11:37:01,747 memoadmin.py [line:93] memo_log.log INFO 验证成功！
+2019-10-09 11:37:06,253 memoadmin.py [line:144] memo_log.log WARNING 新增备忘条目：2019-10-10 14:00:00 开会@我
+2019-10-09 11:37:12,403 memoadmin.py [line:188] memo_log.log INFO 查看备忘录列表
+2019-10-09 11:37:42,190 memoadmin.py [line:144] memo_log.log WARNING 新增备忘条目：2019-10-11 18:00:00 吃火锅@小卢
+2019-10-09 11:37:58,478 memoadmin.py [line:188] memo_log.log INFO 查看备忘录列表
+2019-10-09 11:38:40,814 memoadmin.py [line:144] memo_log.log WARNING 新增备忘条目：2019-10-09 19:00:00 看电影@小李
+2019-10-09 11:38:46,528 memoadmin.py [line:188] memo_log.log INFO 查看备忘录列表
+2019-10-09 11:39:05,023 memoadmin.py [line:158] memo_log.log WARNING 删除条目-ID: 2    2019-10-11 18:00:00 吃火锅 ['小卢']
+2019-10-09 11:39:14,218 memoadmin.py [line:188] memo_log.log INFO 查看备忘录列表
+2019-10-09 11:55:03,487 memoadmin.py [line:93] memo_log.log INFO 验证成功！
+2019-10-09 11:55:05,227 memoadmin.py [line:190] memo_log.log INFO 查看备忘录列表
+2019-10-09 12:09:56,006 memoadmin.py [line:93] memo_log.log INFO 验证成功！
+2019-10-09 12:09:57,395 memoadmin.py [line:187] memo_log.log INFO 查看备忘录列表
+2019-10-09 13:10:22,730 memoadmin.py [line:93] memo_log.log INFO 验证成功！
+2019-10-09 13:10:24,051 memoadmin.py [line:187] memo_log.log INFO 查看备忘录列表
+2019-10-09 13:13:07,813 memoadmin.py [line:93] memo_log.log INFO 验证成功！
+2019-10-09 13:13:08,556 memoadmin.py [line:188] memo_log.log INFO 查看备忘录列表
+2019-10-09 13:13:54,599 memoadmin.py [line:158] memo_log.log WARNING 删除条目-ID: 3    2019-10-09 19:00:00 看电影 ['小李']
+2019-10-09 13:14:06,651 memoadmin.py [line:93] memo_log.log INFO 验证成功！
+2019-10-09 13:14:08,172 memoadmin.py [line:187] memo_log.log INFO 查看备忘录列表
+2019-10-09 13:15:01,095 memoadmin.py [line:93] memo_log.log INFO 验证成功！
+2019-10-09 13:15:13,484 memoadmin.py [line:144] memo_log.log WARNING 新增备忘条目：2019-10-10 20:30:00 学习英语@我
+2019-10-09 13:15:23,096 memoadmin.py [line:187] memo_log.log INFO 查看备忘录列表
+2019-10-09 13:15:52,095 memoadmin.py [line:144] memo_log.log WARNING 新增备忘条目：2019-10-11 12:00:00 买零食@我
+2019-10-09 13:16:03,733 memoadmin.py [line:157] memo_log.log WARNING 删除条目-ID: 3    2019-10-11 12:00:00 买零食 ['我']
+2019-10-09 23:24:45,727 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-10-09 23:26:42,550 memoadmin.py [line:145] memo_log.log WARNING 新增备忘条目：2019-11-05 14:00:00 开会@我
+2019-10-09 23:27:34,600 memoadmin.py [line:145] memo_log.log WARNING 新增备忘条目：2019-11-08 15:00:00 看演出@我
+2019-10-09 23:30:53,751 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-10-09 23:32:09,169 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-10-09 23:32:41,923 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-10-09 23:33:02,523 memoadmin.py [line:188] memo_log.log INFO 查看备忘录列表
+2019-10-09 23:34:56,778 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-10-10 08:44:24,276 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-10-10 08:47:04,253 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-10-10 08:51:28,835 memoadmin.py [line:94] memo_log.log INFO 验证成功！
+2019-10-10 08:52:04,480 memoadmin.py [line:95] memo_log.log INFO 验证成功！
+2019-10-10 08:54:51,763 memoadmin.py [line:95] memo_log.log INFO 验证成功！
+2019-10-10 08:55:43,545 memoadmin.py [line:95] memo_log.log INFO 验证成功！
+2019-10-10 09:00:44,840 memoadmin.py [line:95] memo_log.log INFO 验证成功！
+2019-10-10 09:07:04,850 memoadmin.py [line:95] memo_log.log INFO 验证成功！
+2019-10-10 09:08:23,204 memoadmin.py [line:95] memo_log.log INFO 验证成功！
+2019-10-10 09:12:20,882 memoadmin.py [line:95] memo_log.log INFO 验证成功！
+2019-10-10 21:01:09,687 memoadmin.py [line:96] memo_log.log INFO 验证成功！
+2019-10-10 21:01:12,312 memoadmin.py [line:185] memo_log.log INFO 查看备忘录列表
+2019-10-10 21:02:09,499 memoadmin.py [line:96] memo_log.log INFO 验证成功！
+2019-10-10 21:03:29,184 memoadmin.py [line:96] memo_log.log INFO 验证成功！
+2019-10-10 21:06:57,795 memoadmin.py [line:96] memo_log.log INFO 验证成功！
+2019-10-10 21:07:31,139 memoadmin.py [line:142] memo_log.log WARNING 新增备忘条目：2019-10-11 15:00:00 学习英语@我
+2019-10-10 21:10:33,653 memoadmin.py [line:96] memo_log.log INFO 验证成功！
+2019-10-10 21:11:00,908 memoadmin.py [line:96] memo_log.log INFO 验证成功！
+2019-10-10 21:11:46,474 memoadmin.py [line:96] memo_log.log INFO 验证成功！
+2019-10-10 21:22:13,245 memoadmin.py [line:96] memo_log.log INFO 验证成功！
+2019-10-10 21:41:40,784 memoadmin.py [line:75] memo_log.log WARNING 新用户admin已创建
+2019-10-10 21:41:50,612 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 21:42:07,289 memoadmin.py [line:144] memo_log.log WARNING 新增备忘条目：2019-10-11 14:00:00 开会@小李@小王
+2019-10-10 21:42:21,940 memoadmin.py [line:144] memo_log.log WARNING 新增备忘条目：2019-10-12 14:00:00 开会@小李@小王
+2019-10-10 21:42:54,584 memoadmin.py [line:144] memo_log.log WARNING 新增备忘条目：2019-10-16 19:00:00 看电影@小卢
+2019-10-10 21:43:36,059 memoadmin.py [line:144] memo_log.log WARNING 新增备忘条目：2019-11-04 18:00:00 庆生@小卢
+2019-10-10 21:43:44,955 memoadmin.py [line:187] memo_log.log INFO 查看备忘录列表
+2019-10-10 21:45:27,193 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 22:48:40,948 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 22:49:37,404 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 22:56:28,824 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 22:56:28,835 memoadmin.py [line:195] memo_log.log INFO 查看备忘录列表
+2019-10-10 22:56:47,344 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 22:57:08,440 memoadmin.py [line:146] memo_log.log WARNING 新增备忘条目：2019-10-12 23:30:00 睡觉@我
+2019-10-10 23:07:44,537 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 23:07:44,546 memoadmin.py [line:195] memo_log.log INFO 查看备忘录列表
+2019-10-10 23:08:02,364 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 23:08:34,187 memoadmin.py [line:146] memo_log.log WARNING 新增备忘条目：2019-10-16 19:00:00 聚会@我
+2019-10-10 23:09:16,015 memoadmin.py [line:161] memo_log.log WARNING 删除条目-ID: 6    2019-10-16 19:00:00 聚会 ['我']
+2019-10-10 23:09:19,818 memoadmin.py [line:195] memo_log.log INFO 查看备忘录列表
+2019-10-10 23:11:31,473 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 23:11:46,390 memoadmin.py [line:183] memo_log.log WARNING 备忘录修改成功!  ID: 5    2019-10-12 23:30:00 睡觉 ['我'] 修改为 2019-10-12 19:00:00 看RNG的比赛@我
+2019-10-10 23:12:13,790 memoadmin.py [line:195] memo_log.log INFO 查看备忘录列表
+2019-10-10 23:13:15,890 memoadmin.py [line:222] memo_log.log WARNING 导出Admin的备忘录为PDF
+2019-10-10 23:43:09,993 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 23:43:16,294 memoadmin.py [line:195] memo_log.log INFO 查看备忘录列表
+2019-10-10 23:44:32,732 memoadmin.py [line:146] memo_log.log WARNING 新增备忘条目：2019-10-11 19:00:00 看电影@小卢
+2019-10-10 23:45:20,760 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 23:46:02,785 memoadmin.py [line:146] memo_log.log WARNING 新增备忘条目：2019-10-11 18:00:00 吃火锅@小周@小李
+2019-10-10 23:49:52,470 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 23:50:49,476 memoadmin.py [line:146] memo_log.log WARNING 新增备忘条目：2019-11-07 18:00:00 看某明星演唱会@我
+2019-10-10 23:55:23,767 memoadmin.py [line:98] memo_log.log INFO 验证成功！
+2019-10-10 23:55:31,133 memoadmin.py [line:270] memo_log.log WARNING 给admin的邮件发送成功！
+2019-10-12 15:34:10,385 memoadmin.py [line:99] memo_log.log INFO 验证成功！
+2019-10-12 15:34:12,138 memoadmin.py [line:196] memo_log.log INFO 查看备忘录列表
+2019-10-12 15:36:40,650 memoadmin.py [line:99] memo_log.log INFO 验证成功！
+2019-10-12 15:37:04,951 memoadmin.py [line:147] memo_log.log WARNING 新增备忘条目：2019-10-13 16:00:00 学习英语@我
+2019-10-12 15:39:10,938 memoadmin.py [line:76] memo_log.log WARNING 新用户ball已创建
+2019-10-12 15:39:14,372 memoadmin.py [line:99] memo_log.log INFO 验证成功！
+2019-10-12 15:39:15,169 memoadmin.py [line:196] memo_log.log INFO 查看备忘录列表
