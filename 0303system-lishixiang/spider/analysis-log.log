@@ -1,0 +1,4 @@
+2019-11-28 18:36:57,507 analysis.py [line:38] analysis log DEBUG 找出所有有效的评价句子
+2019-11-28 18:36:58,182 analysis.py [line:45] analysis log DEBUG 找出评价中重要关键词
+2019-11-28 18:36:58,208 analysis.py [line:55] analysis log INFO 根据关键词找到相应的句子
+2019-11-28 18:36:58,230 analysis.py [line:69] analysis log WARNING 完成词条分析
